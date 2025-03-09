@@ -1,9 +1,10 @@
+import pickle
 from pathlib import Path
 import pandas as pd
 import torch
 from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 
 class LoanDataset(Dataset):
@@ -41,7 +42,17 @@ class LoanCollator:
         return {'target': targets, 'numeric_features': numeric_features, 'cat_features': cat_features}
 
 
-def load_loan_data(file: Path) -> tuple[LoanDataset, LoanDataset]:
+def save_label_encoder(le: LabelEncoder, filename: str):
+    with open(filename, 'wb') as f:
+        pickle.dump(le, f)
+
+
+def load_label_encoder(filename: str) -> LabelEncoder:
+    with open(filename, 'rb') as f:
+        return pickle.load(f)
+
+
+def load_loan_data(file: Path, label_encoder_path: str) -> tuple[LoanDataset, LoanDataset]:
     df = pd.read_csv(file)
 
     if 'id' in df.columns:
@@ -60,10 +71,14 @@ def load_loan_data(file: Path) -> tuple[LoanDataset, LoanDataset]:
             df[feat] = df[feat].fillna("missing")
 
     df['cb_person_default_on_file'] = df['cb_person_default_on_file'].map({'Y': 1, 'N': 0, 'missing': -1})
-    from sklearn.preprocessing import LabelEncoder
-    for feat in ['person_home_ownership', 'loan_intent', 'loan_grade']:
+
+    # Loading or fitting LabelEncoder
+    le = load_label_encoder(label_encoder_path) if Path(label_encoder_path).exists() else None
+    if not le:
         le = LabelEncoder()
-        df[feat] = le.fit_transform(df[feat])
+        for feat in ['person_home_ownership', 'loan_intent', 'loan_grade']:
+            df[feat] = le.fit_transform(df[feat])
+        save_label_encoder(le, label_encoder_path)
 
     scaler = StandardScaler().fit(df[num_features])
     df[num_features] = scaler.transform(df[num_features])
@@ -72,7 +87,7 @@ def load_loan_data(file: Path) -> tuple[LoanDataset, LoanDataset]:
     return LoanDataset(df_train, num_features, cat_features), LoanDataset(df_val, num_features, cat_features)
 
 
-def load_test_data(file: Path) -> LoanDataset:
+def load_test_data(file: Path, label_encoder_path: str) -> LoanDataset:
     df = pd.read_csv(file)
     ids = None
     if 'id' in df.columns:
@@ -94,10 +109,11 @@ def load_test_data(file: Path) -> LoanDataset:
             df[feat] = df[feat].fillna("missing")
 
     df['cb_person_default_on_file'] = df['cb_person_default_on_file'].map({'Y': 1, 'N': 0, 'missing': -1})
-    from sklearn.preprocessing import LabelEncoder
+
+    # Loading LabelEncoder
+    le = load_label_encoder(label_encoder_path)
     for feat in ['person_home_ownership', 'loan_intent', 'loan_grade']:
-        le = LabelEncoder()
-        df[feat] = le.fit_transform(df[feat])
+        df[feat] = le.transform(df[feat])
 
     scaler = StandardScaler().fit(df[num_features])
     df[num_features] = scaler.transform(df[num_features])

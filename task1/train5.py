@@ -1,6 +1,5 @@
 from pathlib import Path
 import torch
-from torch import seed
 from torch.nn import BCEWithLogitsLoss
 from torch.optim import SGD
 from torch.utils.data import DataLoader
@@ -36,14 +35,14 @@ def train():
 
     torch.manual_seed(seed)
 
-    train_dataset, val_dataset = load_loan_data(Path('loan_train.csv'))
+    label_encoder_path = 'label_encoder.pkl'
+    train_dataset, val_dataset = load_loan_data(Path('loan_train.csv'), label_encoder_path)
     collator = LoanCollator()
     train_dl = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4, collate_fn=collator)
     val_dl = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, collate_fn=collator)
 
-    num_cat = {}
-    for feat in ['person_home_ownership', 'loan_intent', 'loan_grade']:
-        num_cat[feat] = train_dataset.data[feat].nunique()
+    num_cat = {feat: train_dataset.data[feat].nunique() for feat in
+               ['person_home_ownership', 'loan_intent', 'loan_grade']}
     num_cat['cb_person_default_on_file'] = 2
 
     input_numeric_dim = len([
@@ -104,7 +103,7 @@ def train():
         val_auc = val_auroc.compute().item()
         print(f"Epoch {epoch + 1}: Val Loss {val_loss:.4f}, Val AUROC {val_auc:.4f}")
 
-    test_dataset = load_test_data(Path('loan_test.csv'))
+    test_dataset = load_test_data(Path('loan_test.csv'), label_encoder_path)
     test_dl = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4, collate_fn=collator)
 
     all_predictions = []

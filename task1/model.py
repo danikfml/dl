@@ -42,10 +42,8 @@ class LoanApprovalModel(nn.Module):
         x_numeric = torch.stack(list(numeric_features.values()), dim=-1)
         x_numeric = self.numeric_linear(x_numeric)
 
-        emb_list = []
-        for feat, emb_layer in self.embeddings.items():
-            emb_list.append(emb_layer(cat_features[feat]))
-        x_cat = sum(emb_list)
+        emb_list = [emb_layer(cat_features[feat]) for feat, emb_layer in self.embeddings.items()]
+        x_cat = torch.cat(emb_list, dim=-1)
 
         x = x_numeric + x_cat
         x = self.input_linear(x)

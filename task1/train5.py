@@ -36,7 +36,8 @@ def train():
     torch.manual_seed(seed)
 
     label_encoder_path = 'label_encoder.pkl'
-    train_dataset, val_dataset = load_loan_data(Path('loan_train.csv'), label_encoder_path)
+    scaler_path = 'scaler.pkl'
+    train_dataset, val_dataset = load_loan_data(Path('loan_train.csv'), label_encoder_path, scaler_path)
     collator = LoanCollator()
     train_dl = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4, collate_fn=collator)
     val_dl = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, collate_fn=collator)
@@ -103,7 +104,7 @@ def train():
         val_auc = val_auroc.compute().item()
         print(f"Epoch {epoch + 1}: Val Loss {val_loss:.4f}, Val AUROC {val_auc:.4f}")
 
-    test_dataset = load_test_data(Path('loan_test.csv'), label_encoder_path)
+    test_dataset = load_test_data(Path('loan_test.csv'), label_encoder_path, scaler_path)
     test_dl = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4, collate_fn=collator)
 
     all_predictions = []

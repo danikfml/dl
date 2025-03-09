@@ -9,7 +9,6 @@ import pandas as pd
 from dataset import load_loan_data, load_test_data, LoanCollator
 from model import LoanApprovalModel
 
-
 def _to_device(batch: dict, device: torch.device) -> dict:
     if 'target' in batch and batch['target'] is not None:
         batch['target'] = batch['target'].to(device)
@@ -18,7 +17,6 @@ def _to_device(batch: dict, device: torch.device) -> dict:
     for key in batch['cat_features']:
         batch['cat_features'][key] = batch['cat_features'][key].to(device)
     return batch
-
 
 def train():
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -36,13 +34,13 @@ def train():
     torch.manual_seed(seed)
 
     label_encoder_path = 'label_encoder.pkl'
-    train_dataset, val_dataset = load_loan_data(Path('loan_train.csv'), label_encoder_path)
+    scaler_path = 'scaler.pkl'
+    train_dataset, val_dataset = load_loan_data(Path('loan_train.csv'), label_encoder_path, scaler_path)
     collator = LoanCollator()
     train_dl = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4, collate_fn=collator)
     val_dl = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4, collate_fn=collator)
 
-    num_cat = {feat: train_dataset.data[feat].nunique() for feat in
-               ['person_home_ownership', 'loan_intent', 'loan_grade']}
+    num_cat = {feat: train_dataset.data[feat].nunique() for feat in ['person_home_ownership', 'loan_intent', 'loan_grade']}
     num_cat['cb_person_default_on_file'] = 2
 
     input_numeric_dim = len([
@@ -103,7 +101,7 @@ def train():
         val_auc = val_auroc.compute().item()
         print(f"Epoch {epoch + 1}: Val Loss {val_loss:.4f}, Val AUROC {val_auc:.4f}")
 
-    test_dataset = load_test_data(Path('loan_test.csv'), label_encoder_path)
+    test_dataset = load_test_data(Path('loan_test.csv'), label_encoder_path, scaler_path)
     test_dl = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4, collate_fn=collator)
 
     all_predictions = []
@@ -133,7 +131,6 @@ def train():
     })
     submission.to_csv('submission.csv', index=False)
     print("Предсказания сохранены в submission.csv")
-
 
 if __name__ == '__main__':
     train()

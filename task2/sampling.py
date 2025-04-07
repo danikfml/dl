@@ -7,7 +7,7 @@ def generate_sampling(input_text, num_samples=3):
     try:
         inputs = tokenizer(input_text, return_tensors="pt").to(device)
 
-        for _ in range(num_samples):
+        for _ in range(num_samples):  # 3 примера
             current_ids = inputs.input_ids.clone()
             attention_mask = inputs.attention_mask.clone()
 

@@ -33,10 +33,14 @@ def beam_search(input_text, num_beams=4, length_penalty=1.0):
 
                 with torch.no_grad():
                     outputs = model(input_ids=torch.tensor([beam.tokens], device=device))
-                logits = outputs.logits[0, -1]
 
-                scores, tokens = torch.topk(logits, num_beams)
-                for score, token in zip(scores, tokens):
+                logits = outputs.logits[0, -1]
+                logprobs = torch.log_softmax(logits, dim=-1)  # Получаем logprobs, применяя softmax к логитам
+
+                # Берём num_beams самых вероятных токенов и их logprobs
+                top_scores, top_tokens = torch.topk(logprobs, num_beams)
+
+                for score, token in zip(top_scores, top_tokens):
                     new_tokens = beam.tokens + [token.item()]
                     new_score = beam.score + score.item()
                     new_beams.append(Beam(new_tokens, new_score))
@@ -44,15 +48,18 @@ def beam_search(input_text, num_beams=4, length_penalty=1.0):
             if not new_beams:
                 break
 
-            new_beams.sort(reverse=True)
+            # Сортируем кандидатов по score / (length ** length_penalty)
+            new_beams.sort(key=lambda x: x.score / (x.length ** length_penalty), reverse=True)
             beams = new_beams[:num_beams]
 
+            # Если количество завершённых кандидатов достигло num_beams, завершаем генерацию
             if len(finished) >= num_beams:
                 break
 
         if not finished:
             finished = beams
 
+        # Возвращаем лучший кандидат с учётом длины последовательности
         finished.sort(key=lambda x: x.score / (x.length ** length_penalty), reverse=True)
         best = finished[0]
 

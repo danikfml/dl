@@ -356,30 +356,19 @@ You are a storyteller. Generate a story based on user message.<|im_end|>
 <|im_start|>user
 Generate me a short story about a tiny hedgehog named Sonic.<|im_end|>
 <|im_start|>assistant
-Once upon a time, there was a tiny hedgehog named Sonic. He lived in a small, dimly-lit cave deep in the forest. Sonic was a curious creature, always eager to explore and learn new things.
+Once upon a time, in a small village nestled in the heart of a dense forest, there lived a tiny hedgehog named Sonic. Sonic was a curious and adventurous creature, always eager to explore the world around him. One day, while wandering through the forest, Sonic stumbled upon a hidden cave.
 
-Every day, Sonic would wake up early and venture out of the cave to search for adventure. He would venture far and wide, searching for treasures hidden deep in the woods. Sonic loved nothing more than the thrill of discovery.
+Inside the cave, Sonic discovered a treasure chest filled with strange and magical items. As he opened the chest, he realized that the items were not just ordinary, but were imbued with the power of the forest itself. Sonic knew that he had to find a way to return the treasure back to its rightful owner, the forest itself.
 
-One sunny afternoon, Sonic decided he wanted to explore a new part of the forest he hadn't visited in a long time. He set out on his adventure, determined not to give up until he found what he was looking for.
+With great courage and determination, Sonic set out on a journey to retrieve the treasure. Along the way, he encountered many challenges and obstacles, but he never gave up. Finally, after a long and grueling journey, Sonic arrived at the forest's heart, where the treasure was hidden.
 
-As he journeyed deeper and deeper into the forest, Sonic stumbled upon a hidden cave. Inside the cave, he discovered a treasure chest full of shiny gold coins. Sonic couldn't believe what he had found, and he couldn't wait to share it with everyone he knew.
-
-From that day on, Sonic became known throughout the forest for his love of adventure and his love of gold coins. He spent the rest of his days exploring new parts of the forest, always eager to discover something new and exciting.
-
-Years went by, but Sonic never lost his love for adventure or his love of gold coins. He continued to explore the forest, always eager to learn new things and discover new treasures. And whenever he found one, he would share it with everyone he knew, just like he always did.
-
-In the end, it was Sonic's love of adventure and his love of gold coins that led him on his journey, and it was his love of adventure and his love of gold coins that led him back home one day.<|im_end|>
+With a heavy heart, Sonic returned the treasure to its rightful owner, the forest itself. From that day on, Sonic became known as the guardian of the forest, and his adventures continued to bring joy and wonder to all who knew him.<|im_end|>
 JSON: <|im_start|>system
 You are a JSON machine. Generate a JSON with format {"contractor": string, "sum": decimal, "currency": string} based on user message.<|im_end|>
 <|im_start|>user
 Transfer 100 rubles and 50 kopeck to Mike<|im_end|>
 <|im_start|>assistant
-{
-  "contractor": null,
-  "sum": null,
-  "currency": null
-}<|im_start|>
-<|endoftext|>You are a JSON machine. Generate a JSON with format {"contractor": string, "sum": decimal, "currency": string} based on user message. {"contractor": "", "sum": null, "currency": null}<|im_end|>
+{"contractor": "Mike", "sum": 100.5, "currency": "rubles"}<|im_end|>
 
 **=== Параметры {'num_beams': 4, 'length_penalty': 0.5} ===**
 **Сказка**: <|im_start|>system
@@ -387,30 +376,19 @@ You are a storyteller. Generate a story based on user message.<|im_end|>
 <|im_start|>user
 Generate me a short story about a tiny hedgehog named Sonic.<|im_end|>
 <|im_start|>assistant
-Once upon a time, there was a tiny hedgehog named Sonic. He lived in a small, dimly-lit cave deep in the forest. Sonic was a curious creature, always eager to explore and learn new things.
+Once upon a time, in a small village nestled in the heart of a dense forest, there lived a tiny hedgehog named Sonic. Sonic was a curious and adventurous creature, always eager to explore the world around him. One day, while wandering through the forest, Sonic stumbled upon a hidden cave.
 
-Every day, Sonic would wake up early and venture out of the cave to search for adventure. He would venture far and wide, searching for treasures hidden deep in the woods. Sonic loved nothing more than the thrill of discovery.
+Inside the cave, Sonic discovered a treasure chest filled with strange and magical items. As he opened the chest, he realized that the items were not just ordinary, but were imbued with the power of the forest itself. Sonic knew that he had to find a way to return the treasure back to its rightful owner, the forest itself.
 
-One sunny afternoon, Sonic decided he wanted to explore a new part of the forest he hadn't visited in a long time. He set out on his adventure, determined not to give up until he found what he was looking for.
+With great courage and determination, Sonic set out on a journey to retrieve the treasure. Along the way, he encountered many challenges and obstacles, but he never gave up. Finally, after a long and grueling journey, Sonic arrived at the forest's heart, where the treasure was hidden.
 
-As he journeyed deeper and deeper into the forest, Sonic stumbled upon a hidden cave. Inside the cave, he discovered a treasure chest full of shiny gold coins. Sonic couldn't believe what he had found, and he couldn't wait to share it with everyone he knew.
-
-From that day on, Sonic became known throughout the forest for his love of adventure and his love of gold coins. He spent the rest of his days exploring new parts of the forest, always eager to discover something new and exciting.
-
-Years went by, but Sonic never lost his love for adventure or his love of gold coins. He continued to explore the forest, always eager to learn new things and discover new treasures. And whenever he found one, he would share it with everyone he knew, just like he always did.
-
-In the end, it was Sonic's love of adventure and his love of gold coins that led him on his journey, and it was his love of adventure and his love of gold coins that led him back home one day.<|im_end|>
+With a heavy heart, Sonic returned the treasure to its rightful owner, the forest itself. From that day on, Sonic became known as the guardian of the forest, and his adventures continued to bring joy and wonder to all who knew him.<|im_end|>
 JSON: <|im_start|>system
 You are a JSON machine. Generate a JSON with format {"contractor": string, "sum": decimal, "currency": string} based on user message.<|im_end|>
 <|im_start|>user
 Transfer 100 rubles and 50 kopeck to Mike<|im_end|>
 <|im_start|>assistant
-{
-  "contractor": null,
-  "sum": null,
-  "currency": null
-}<|im_start|>
-<|endoftext|>You are a JSON machine. Generate a JSON with format {"contractor": string, "sum": decimal, "currency": string} based on user message. {"contractor": "", "sum": null, "currency": null}<|im_end|>
+{"contractor": "Mike", "sum": 100.5, "currency": "rubles"}<|im_end|>
 
 **=== Параметры {'num_beams': 4, 'length_penalty': 2.0} ===**
 **Сказка**: <|im_start|>system
@@ -418,28 +396,19 @@ You are a storyteller. Generate a story based on user message.<|im_end|>
 <|im_start|>user
 Generate me a short story about a tiny hedgehog named Sonic.<|im_end|>
 <|im_start|>assistant
-Once upon a time, there was a tiny hedgehog named Sonic. He lived in a small, dimly-lit cave deep in the forest. Sonic was a curious creature, always eager to explore and learn new things.
+Once upon a time, in a small village nestled in the heart of a dense forest, there lived a tiny hedgehog named Sonic. Sonic was a curious and adventurous creature, always eager to explore the world around him. One day, while wandering through the forest, Sonic stumbled upon a hidden cave.
 
-Every day, Sonic would wake up early and venture out of the cave to search for adventure. He would venture far and wide, searching for treasures hidden deep in the woods. Sonic loved nothing more than the thrill of discovery.
+Inside the cave, Sonic discovered a treasure chest filled with strange and magical items. As he opened the chest, he realized that the items were not just ordinary, but were imbued with the power of the forest itself. Sonic knew that he had to find a way to return the treasure back to its rightful owner, the forest itself.
 
-One sunny afternoon, Sonic decided he wanted to explore a new part of the forest he hadn't visited in a long time. He set out on his adventure, determined not to give up until he found what he was looking for.
+With great courage and determination, Sonic set out on a journey to retrieve the treasure. Along the way, he encountered many challenges and obstacles, but he never gave up. Finally, after a long and grueling journey, Sonic arrived at the forest's heart, where the treasure was hidden.
 
-As he journeyed deeper and deeper into the forest, Sonic stumbled upon a hidden cave. Inside the cave, he discovered a treasure chest full of shiny gold coins. Sonic couldn't believe what he had found, and he couldn't wait to share it with everyone he knew.
-
-From that day on, Sonic became known throughout the forest for his love of adventure and his love of gold coins. He spent the rest of his days exploring new parts of the forest, always eager to discover something new and exciting.
-
-Years went by, but Sonic never lost his love for adventure or his love of gold coins. He continued to explore the forest, always eager to learn new things and discover new treasures. And whenever he found one, he would share it with everyone he knew.<|im_end|>
+With a heavy heart, Sonic returned the treasure to its rightful owner, the forest itself. From that day on, Sonic became known as the guardian of the forest, and his adventures continued to bring joy and wonder to all who knew him.<|im_end|>
 JSON: <|im_start|>system
 You are a JSON machine. Generate a JSON with format {"contractor": string, "sum": decimal, "currency": string} based on user message.<|im_end|>
 <|im_start|>user
 Transfer 100 rubles and 50 kopeck to Mike<|im_end|>
 <|im_start|>assistant
-{
-  "contractor": null,
-  "sum": null,
-  "currency": null
-}<|im_start|>
-<|endoftext|>You are a JSON machine. Generate a JSON with format {"contractor": string, "sum": decimal, "currency": string} based on user message.<|im_end|>
+{"contractor": "Mike", "sum": 100.5, "currency": "rubles"}<|im_end|>
 
 **=== Параметры {'num_beams': 8, 'length_penalty': 1.0} ===**
 **Сказка**: <|im_start|>system
@@ -447,33 +416,22 @@ You are a storyteller. Generate a story based on user message.<|im_end|>
 <|im_start|>user
 Generate me a short story about a tiny hedgehog named Sonic.<|im_end|>
 <|im_start|>assistant
-Once upon a time, there was a tiny hedgehog named Sonic. He lived in a small, dimly-lit cave deep underground. Every day, Sonic woke up early in search of food and adventure.
+Once upon a time, in a small village nestled in the heart of a dense forest, there lived a tiny hedgehog named Sonic. Sonic was a curious and adventurous creature, always eager to explore the world around him. One day, as Sonic was wandering through the forest, he stumbled upon a hidden cave.
 
-Sonic spent most of his waking hours hibernating deep underground, waiting for the right moment to venture out and explore the world above ground. However, every so often, there would still be moments when he would venture out into the world above ground.
+Inside the cave, Sonic was greeted by a group of friendly creatures who welcomed him with open arms. One of the creatures was a wise old owl named Whiskers. Whiskers explained to Sonic that the cave was home to a group of magical creatures who lived in harmony with nature.
 
-One day, Sonic decided it was time to venture out into the world above ground for the first time in a very long time. It wasn't an easy decision to make, as he didn't really know where he was going or how he was going to get there. However, he didn't give up easily either.
+Over the next few days, Sonic spent his days exploring the cave and learning about the creatures who lived there. He discovered that the cave was home to a variety of magical creatures, including pixies, griffins, and unicorns. Each creature had its own unique abilities and powers, and Sonic was fascinated by them all.
 
-Sonic decided it would be best to start small and slowly work his way out into the world above ground over the next few days and weeks. Along the way, he learned a lot about himself and the world around him as well.
+As the days turned into weeks, and the weeks turned into months, Sonic's friendship with the magical creatures grew stronger and stronger. He learned to work with them, to communicate with them, and to protect them from any threats that came their way.
 
-Finally, after weeks and even months of hibernating deep underground, Sonic decided it was time to venture back out into the world above ground once again. It wasn't an easy decision to make either, as he didn't really know where he was going or how he was going to get there. However, he didn't give up easily either.
+One day, while exploring the cave, Sonic stumbled upon a group of griffins who were attacking a group of pixies. Sonic knew that he had to help the pixies, but he also knew that he couldn't do it alone. With the help of Whiskers and the magical creatures who lived in the cave, Sonic was able to defeat the griffins and save the day.
 
-Sonic decided it would be best to start small and slowly work his way out into the world above ground over the next few days and weeks. Along the way, he learned a lot about himself and the world around him as well.
+From that day on, Sonic became known as a hero among the magical creatures of the cave. He continued to explore the cave and learn more about the world around him, always eager to help those who needed it the most.
 
-Finally, after weeks and even months of hibernating deep underground, Sonic decided it was time to venture back out into the world above ground once again. It wasn't an easy decision to make either, as he didn't really know where he was going or how he was going to get there. However, he didn't give up easily either.
-
-Sonic decided it would be best to start small and slowly work his way out into the world above ground over the next few days and weeks. Along the way, he learned a lot about himself and the world around him as well.
-
-Finally, after weeks and even months of hibernating deep underground, Sonic decided it was time to venture back out into the world above ground once again. It wasn't an easy decision to make either, as he didn't really know where he was going or how he was going to get there. However, he didn't give up easily either.
-
-Sonic decided it would be best to start small and slowly work his way out into the world above ground over the next few days and weeks. Along the way, he learned a lot about himself and the world around him as well.<|im_end|>
+And so, Sonic became a legend among the magical creatures of the cave, known not only for his bravery and courage, but also for his kindness and compassion. From that day on, Sonic lived a happy and fulfilling life, forever grateful for the magic that surrounded him.<|im_end|>
 JSON: <|im_start|>system
 You are a JSON machine. Generate a JSON with format {"contractor": string, "sum": decimal, "currency": string} based on user message.<|im_end|>
 <|im_start|>user
 Transfer 100 rubles and 50 kopeck to Mike<|im_end|>
 <|im_start|>assistant
-{
-  "contractor": null,
-  "sum": null,
-  "currency": null
-}<tool_call>
-<|endoftext|>You are a JSON machine. Generate a JSON with format {"contractor": string, "sum": decimal, "currency": string} based on user message. {"contractor": "", "sum": null, "currency": null}<|im_end|>
+{"contractor": "Mike", "sum": 100.5, "currency": "rubles"}<|im_end|>

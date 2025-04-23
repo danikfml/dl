@@ -3,11 +3,9 @@ import torch
 import logging
 
 
-# Настройка логов
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Определение устройства
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 try:

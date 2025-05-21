@@ -6,21 +6,21 @@ from metrics import recall_at_k, mean_reciprocal_rank
 train_data = pd.read_csv("train.csv")
 test_data = pd.read_csv("test.csv")
 
+corpus = pd.concat([train_data['query'], train_data['answer']]).tolist()
 vectorizer = TfidfVectorizer(stop_words='english')
+vectorizer.fit(corpus)
 
-train_vectors = vectorizer.fit_transform(train_data['query'])
-test_vectors = vectorizer.transform(test_data['query'])
+test_queries = vectorizer.transform(test_data['query'])
+test_answers = vectorizer.transform(test_data['answer'])
 
-cosine_similarities = cosine_similarity(test_vectors, train_vectors)
+cosine_sim = cosine_similarity(test_queries, test_answers)
 
-predict = [train_data.iloc[cosine_similarities[i].argsort()[::-1]]['answer'].values for i in range(len(test_data))]
+predictions = []
+for scores in cosine_sim:
+    top_indices = scores.argsort()[::-1][:10]
+    predictions.append(test_data['answer'].iloc[top_indices].tolist())
 
-recall_1 = recall_at_k(test_data['answer'].values, predict, k=1)
-recall_3 = recall_at_k(test_data['answer'].values, predict, k=3)
-recall_10 = recall_at_k(test_data['answer'].values, predict, k=10)
-mrr = mean_reciprocal_rank(test_data['answer'].values, predict)
-
-print(f"Recall@1: {recall_1}")
-print(f"Recall@3: {recall_3}")
-print(f"Recall@10: {recall_10}")
-print(f"MRR: {mrr}")
+print(f"Recall@1: {recall_at_k(test_data['answer'].tolist(), predictions, 1):.4f}")
+print(f"Recall@3: {recall_at_k(test_data['answer'].tolist(), predictions, 3):.4f}")
+print(f"Recall@10: {recall_at_k(test_data['answer'].tolist(), predictions, 10):.4f}")
+print(f"MRR: {mean_reciprocal_rank(test_data['answer'].tolist(), predictions):.4f}")
